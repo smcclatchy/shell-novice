@@ -21,10 +21,10 @@ keypoints:
 - "Nano is a very simple text editor: please use something else for real work."
 ---
 
-We now know how to explore files and directories,
-but how do we create them in the first place?
-Let's go back to our `data-shell` directory on the Desktop
-and use `ls -F` to see what it contains:
+Ahora sabemos cómo explorar archivos y directorios,
+Pero ¿cómo los creamos en primer lugar?
+Volvamos a nuestro directorio `data-shell` en el Escritorio
+Y use `ls -F` para ver lo que contiene:
 
 ~~~
 $ pwd
@@ -48,19 +48,19 @@ Desktop/    notes.txt            writing/
 ~~~
 {: .output}
 
-Let's create a new directory called `thesis` using the command `mkdir thesis`
-(which has no output):
+Vamos a crear un nuevo directorio llamado `thesis` usando el comando` mkdir thesis`
+(Que no tiene salida):
 
 ~~~
 $ mkdir thesis
 ~~~
 {: .bash}
 
-As you might guess from its name,
-`mkdir` means "make directory".
-Since `thesis` is a relative path
-(i.e., doesn't have a leading slash),
-the new directory is created in the current working directory:
+Como usted puede adivinar de su nombre,
+`Mkdir` significa" make directory ".
+Dado que `thesis` es una trayectoria relativa
+(Es decir, no tiene una barra inclinada principal),
+El nuevo directorio se crea en el directorio de trabajo actual:
 
 ~~~
 $ ls -F
@@ -75,50 +75,50 @@ molecules/  solar.pdf
 ~~~
 {: .output}
 
-> ## Two ways of doing the same thing
-> Using the shell to create a directory is no different than using a file explorer.
-> If you open the current directory using your operating system's graphical file explorer,
-> the `thesis` directory will appear there too.
-> While they are two different ways of interacting with the files,
-> the files and directories themselves are the same.
+> ## Dos maneras de hacer lo mismo
+> Usar el shell para crear un directorio no es diferente al usar un explorador de archivos.
+> Si abre el directorio actual utilizando el explorador de archivos gráfico de su sistema operativo,
+> El directorio `thesis` aparecerá allí también.
+> Si bien son dos formas diferentes de interactuar con los archivos,
+> Los archivos y los directorios mismos son iguales.
 {: .callout}
 
-> ## Good names for files and directories
+> ## Buen nombre para archivos y directorios
 >
-> Complicated names of files and directories can make your life very painful
-> when working on the command line. Here we provide a few useful
-> tips for the names of your files from now on.
+> Complicado nombres de archivos y directorios pueden hacer su vida muy dolorosa
+> Cuando se trabaja en la línea de comandos. Aquí ofrecemos algunos útiles
+> Consejos para los nombres de sus archivos de ahora en adelante.
 >
-> 1. Don't use whitespaces.
+> 1. No use espacios en blanco.
 >
->    White spaces can make a name more meaningful
->    but since whitespace is used to break arguments on the command line
->    is better to avoid them on name of files and directories.
->    You can use `-` or `_` instead of whitespace.
+> Los espacios en blanco pueden hacer un nombre más significativo
+> Pero desde whitespace se utiliza para romper los argumentos en la línea de comandos
+> Es mejor evitarlos en nombre de archivos y directorios.
+> Puede utilizar `-` o` _` en lugar de espacios en blanco.
 >
-> 2. Don't begin the name with `-` (dash).
+> 2. No comience el nombre con `-` (guión).
 >
->    Commands treat names starting with `-` as options.
+> Los comandos tratan los nombres que comienzan con `-` como opciones.
 >
-> 3. Stick with letters, numbers, `.` (period), `-` (dash) and `_` (underscore).
+> 3. Pegue con letras, números, `.` (punto),` -` (guión) y `_` (guión bajo).
 >
->    Many other characters have a special meaning on the command line
->    that we will learn during this lesson. Some will only make your command not work,
->    but some of them may even cause you to lose some data!
+> Muchos otros personajes tienen un significado especial en la línea de comandos
+> Que aprenderemos durante esta lección. Algunos sólo harán que su comando no funcione,
+> Pero algunos de ellos pueden incluso hacer que pierdas algunos datos!
 >
-> If you need to refer to names of files or directories that have whitespace
-> or another non-alphanumeric character, you should surround the name in quotes (`""`).
+> Si necesita referirse a nombres de archivos o directorios que tengan espacios en blanco
+> U otro carácter no alfanumérico, debe rodear el nombre entre comillas (`" "`).
 {: .callout}
 
-Since we've just created the `thesis` directory, there's nothing in it yet:
+Puesto que acabamos de crear el directorio `thesis`, no hay nada en él todavía:
 
 ~~~
 $ ls -F thesis
 ~~~
 {: .bash}
 
-Let's change our working directory to `thesis` using `cd`,
-then run a text editor called Nano to create a file called `draft.txt`:
+Cambiemos nuestro directorio de trabajo a `thesis` usando` cd`,
+A continuación, ejecute un editor de texto llamado Nano para crear un archivo denominado `draft.txt`:
 
 ~~~
 $ cd thesis
@@ -126,46 +126,46 @@ $ nano draft.txt
 ~~~
 {: .bash}
 
-> ## Which Editor?
+> ## ¿Qué Editor?
 >
-> When we say, "`nano` is a text editor," we really do mean "text": it can
-> only work with plain character data, not tables, images, or any other
-> human-friendly media. We use it in examples because almost anyone can
-> drive it anywhere without training, but please use something more
-> powerful for real work. On Unix systems (such as Linux and Mac OS X),
-> many programmers use [Emacs](http://www.gnu.org/software/emacs/) or
-> [Vim](http://www.vim.org/) (both of which are completely unintuitive,
-> even by Unix standards), or a graphical editor such as
-> [Gedit](http://projects.gnome.org/gedit/). On Windows, you may wish to
-> use [Notepad++](http://notepad-plus-plus.org/).  Windows also has a built-in
-> editor called `notepad` that can be run from the command line in the same
-> way as `nano` for the purposes of this lesson.  
+> Cuando decimos, "` nano` es un editor de texto, "realmente queremos decir" texto ": puede
+> Sólo funciona con datos de caracteres simples, no con tablas, imágenes o cualquier otro
+> Medios amigables para el hombre. Lo utilizamos en ejemplos porque casi nadie puede
+> Conducirlo en cualquier lugar sin entrenamiento, pero por favor use algo más
+> Potente para el trabajo real. En los sistemas Unix (como Linux y Mac OS X)
+> Muchos programadores utilizan [Emacs] (http://www.gnu.org/software/emacs/) o
+> [Vim] (http://www.vim.org/) (ambos de los cuales son completamente intuitivos,
+> Incluso por estándares Unix), o un editor gráfico como
+> [Gedit] (http://projects.gnome.org/gedit/). En Windows, es posible que desee
+> Utilice [Notepad ++] (http://notepad-plus-plus.org/). Windows también tiene un built-in
+> Editor llamado `notepad` que se puede ejecutar desde la línea de comandos en el mismo
+> Way como `nano` para los propósitos de esta lección.
 >
-> No matter what editor you use, you will need to know where it searches
-> for and saves files. If you start it from the shell, it will (probably)
-> use your current working directory as its default location. If you use
-> your computer's start menu, it may want to save files in your desktop or
-> documents directory instead. You can change this by navigating to
-> another directory the first time you "Save As..."
+> Sea cual sea el editor que uses, necesitarás saber dónde busca
+> Para y guarda archivos. Si lo inicia desde el shell, será (probablemente)
+> Utilice su directorio de trabajo actual como su ubicación predeterminada. Si utiliza
+> El menú de inicio de su computadora, puede guardar archivos en su escritorio o
+> Directorio de documentos en su lugar. Puede cambiar esto navegando a
+> Otro directorio la primera vez que "Guardar como ..."
 {: .callout}
 
-Let's type in a few lines of text.
-Once we're happy with our text, we can press `Ctrl-O` (press the Ctrl or Control key and, while
-holding it down, press the O key) to write our data to disk
-(we'll be asked what file we want to save this to:
-press Return to accept the suggested default of `draft.txt`).
+Escriba algunas líneas de texto.
+Una vez que estamos contentos con nuestro texto, podemos presionar `Ctrl-O` (presionar la tecla Ctrl o Control y, mientras
+Mantenga pulsada la tecla O) para escribir nuestros datos en el disco
+(Se nos preguntará en qué archivo queremos guardar esto:
+Pulse Intro para aceptar el valor predeterminado sugerido de `draft.txt`).
 
 ![Nano in Action](../fig/nano-screenshot.png)
 
-Once our file is saved, we can use `Ctrl-X` to quit the editor and
-return to the shell.
+Una vez que se guarda nuestro archivo, podemos usar `Ctrl-X` para salir del editor y
+Volver a la cáscara.
 
-> ## Control, Ctrl, or ^ Key
+> ## Control, Ctrl o ^ Tecla
 >
-> The Control key is also called the "Ctrl" key. There are various ways
-> in which using the Control key may be described. For example, you may
-> see an instruction to press the Control key and, while holding it down,
-> press the X key, described as any of:
+> La tecla Control también se denomina tecla "Ctrl". Hay varias maneras
+> En la que puede ser descrita la tecla Control. Por ejemplo, puede
+> Ver una instrucción para presionar la tecla Control y, mientras la mantiene pulsada,
+> Presione la tecla X, descrita como cualquiera de:
 >
 > * `Control-X`
 > * `Control+X`
@@ -173,13 +173,13 @@ return to the shell.
 > * `Ctrl+X`
 > * `^X`
 >
-> In nano, along the bottom of the screen you'll see `^G Get Help ^O WriteOut`.
-> This means that you can use `Control-G` to get help and `Control-O` to save your
-> file.
+> En nano, a lo largo de la parte inferior de la pantalla verá `^ G Obtener Ayuda ^ O WriteOut`.
+> Esto significa que puede usar `Control-G` para obtener ayuda y` Control-O` para guardar su
+> Archivo.
 {: .callout}
 
-`nano` doesn't leave any output on the screen after it exits,
-but `ls` now shows that we have created a file called `draft.txt`:
+`Nano` no deja ninguna salida en la pantalla después de que salga,
+Pero `ls` ahora muestra que hemos creado un archivo llamado` draft.txt`:
 
 ~~~
 $ ls
@@ -191,36 +191,36 @@ draft.txt
 ~~~
 {: .output}
 
-Let's tidy up by running `rm draft.txt`:
+Arreglémonos ejecutando `rm draft.txt`:
 
 ~~~
 $ rm draft.txt
 ~~~
 {: .bash}
 
-This command removes files (`rm` is short for "remove").
-If we run `ls` again,
-its output is empty once more,
-which tells us that our file is gone:
+Este comando elimina los archivos (`rm` es el término" remove ").
+Si ejecutamos `ls` de nuevo,
+Su salida está vacía una vez más,
+Que nos dice que nuestro archivo ha desaparecido:
 
 ~~~
 $ ls
 ~~~
 {: .bash}
 
-> ## Deleting Is Forever
+> ## Eliminar es para siempre
 >
-> The Unix shell doesn't have a trash bin that we can recover deleted
-> files from (though most graphical interfaces to Unix do).  Instead,
-> when we delete files, they are unhooked from the file system so that
-> their storage space on disk can be recycled. Tools for finding and
-> recovering deleted files do exist, but there's no guarantee they'll
-> work in any particular situation, since the computer may recycle the
-> file's disk space right away.
+> La shell de Unix no tiene un contenedor de basura que podamos recuperar eliminado
+> De los archivos de (aunque la mayoría de las interfaces gráficas a Unix hacer). En lugar,
+> Cuando eliminamos archivos, se desenganchan del sistema de archivos para que
+> Su espacio de almacenamiento en disco puede ser reciclado. Herramientas para encontrar y
+> La recuperación de los archivos eliminados existe, pero no hay garantía de que
+> Trabajar en cualquier situación particular, ya que la computadora puede reciclar la
+> El espacio en disco del archivo inmediatamente.
 {: .callout}
 
-Let's re-create that file
-and then move up one directory to `/Users/nelle/Desktop/data-shell` using `cd ..`:
+Vamos a volver a crear ese archivo
+Y luego sube un directorio a `/ Users / nelle / Desktop / data-shell` usando `cd ..`:
 
 ~~~
 $ pwd
@@ -248,8 +248,8 @@ $ cd ..
 ~~~
 {: .bash}
 
-If we try to remove the entire `thesis` directory using `rm thesis`,
-we get an error message:
+Si tratamos de eliminar todo el directorio `thesis` usando `rm thesis`,
+Recibimos un mensaje de error:
 
 ~~~
 $ rm thesis
