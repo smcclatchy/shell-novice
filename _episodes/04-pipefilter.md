@@ -23,13 +23,13 @@ keypoints:
 - "The best way to use the shell is to use pipes to combine simple single-purpose programs (filters)."
 ---
 
-Now that we know a few basic commands,
-we can finally look at the shell's most powerful feature:
-the ease with which it lets us combine existing programs in new ways.
-We'll start with a directory called `molecules`
-that contains six files describing some simple organic molecules.
-The `.pdb` extension indicates that these files are in Protein Data Bank format,
-a simple text format that specifies the type and position of each atom in the molecule.
+Ahora que sabemos algunos comandos básicos,
+Finalmente podemos ver la característica más poderosa de la shell:
+La facilidad con la que nos permite combinar los programas existentes de nuevas maneras.
+Comenzaremos con un directorio llamado `moléculas`
+Que contiene seis archivos que describen algunas moléculas orgánicas simples.
+La extensión `.pdb` indica que estos archivos están en formato Protein Data Bank,
+Un formato de texto simple que especifica el tipo y la posición de cada átomo en la molécula.
 
 ~~~
 $ ls molecules
@@ -42,11 +42,11 @@ octane.pdb    pentane.pdb   propane.pdb
 ~~~
 {: .output}
 
-Let's go into that directory with `cd` and run the command `wc *.pdb`.
-`wc` is the "word count" command:
-it counts the number of lines, words, and characters in files.
-The `*` in `*.pdb` matches zero or more characters,
-so the shell turns `*.pdb` into a list of all `.pdb` files in the current directory:
+Vamos a entrar en ese directorio con `cd` y ejecutar el comando` wc * .pdb`.
+`Wc` es el comando" word count ":
+Cuenta el número de líneas, palabras y caracteres en los archivos.
+El `*` en `* .pdb` coincide con cero o más caracteres,
+Así que el shell convierte `* .pdb` en una lista de todos los archivos` .pdb` en el directorio actual:
 
 ~~~
 $ cd molecules
@@ -65,37 +65,37 @@ $ wc *.pdb
 ~~~
 {: .output}
 
-> ## Wildcards
+> ## comodines
 >
-> `*` is a **wildcard**. It matches zero or more
-> characters, so `*.pdb` matches `ethane.pdb`, `propane.pdb`, and every
-> file that ends with '.pdb'. On the other hand, `p*.pdb` only matches
-> `pentane.pdb` and `propane.pdb`, because the 'p' at the front only
-> matches filenames that begin with the letter 'p'.
+> `*` Es un comodín **. Corresponde a cero o más
+>, Así que `* .pdb` coincide con` ethane.pdb`, `propane.pdb`, y cada
+> Archivo que termina con '.pdb'. Por otro lado, `p * .pdb` sólo coincide
+> `Pentane.pdb` y` propane.pdb`, porque el 'p' sólo en la parte delantera
+> Hace coincidir los nombres de archivo que comienzan con la letra 'p'.
 >
-> `?` is also a wildcard, but it only matches a single character. This
-> means that `p?.pdb` would match `pi.pdb` or `p5.pdb` (if we had these two
-> files in the `molecules` directory), but not `propane.pdb`.
-> We can use any number of wildcards at a time: for example, `p*.p?*`
-> matches anything that starts with a 'p' and ends with '.', 'p', and at
-> least one more character (since the `?` has to match one character, and
-> the final `*` can match any number of characters). Thus, `p*.p?*` would
-> match `preferred.practice`, and even `p.pi` (since the first `*` can
-> match no characters at all), but not `quality.practice` (doesn't start
-> with 'p') or `preferred.p` (there isn't at least one character after the
+> `?` También es un comodín, pero sólo coincide con un solo carácter. Esto
+> Significa que `p? .pdb` podría coincidir con` pi.pdb` o `p5.pdb` (si tuviéramos estos dos
+> En el directorio `molecules`), pero no` propane.pdb`.
+> Podemos usar cualquier número de comodines a la vez: por ejemplo, `p * .p? *`
+> Coincide con cualquier cosa que comience con un 'p' y termine con '.', 'P', y en
+> Al menos un carácter más (ya que `?` Tiene que coincidir con un carácter, y
+> El final `*` puede coincidir con cualquier número de caracteres). Por lo tanto, `p * .p? *`
+> Match `preferred.practice`, e incluso` p.pi` (desde el primer `*` puede
+> No coinciden con ningún carácter), pero no `quality.practice` (no se inicia
+> Con 'p') o `preferred.p` (no hay al menos un carácter después del
 > '.p').
 >
-> When the shell sees a wildcard, it expands the wildcard to create a
-> list of matching filenames *before* running the command that was
-> asked for. As an exception, if a wildcard expression does not match
-> any file, Bash will pass the expression as a parameter to the command
-> as it is. For example typing `ls *.pdf` in the `molecules` directory
-> (which contains only files with names ending with `.pdb`) results in
-> an error message that there is no file called `*.pdf`.
-> However, generally commands like `wc` and `ls` see the lists of
-> file names matching these expressions, but not the wildcards
-> themselves. It is the shell, not the other programs, that deals with
-> expanding wildcards, and this is another example of orthogonal design.
+> Cuando el shell ve un comodín, expande el comodín para crear un
+> Lista de nombres de archivo coincidentes * antes * ejecutando el comando que fue
+> Pidió. Como excepción, si una expresión comodín no coincide
+> Cualquier archivo, Bash pasará la expresión como un parámetro al comando
+> Tal como es. Por ejemplo, escribiendo `ls * .pdf` en el directorio` molecules`
+> (Que contiene sólo los archivos con nombres que terminan con `.pdb`) da como resultado
+> Un mensaje de error que no hay ningún archivo llamado `* .pdf`.
+> Sin embargo, generalmente los comandos como `wc` y` ls` ver las listas de
+> Nombres de archivo que coinciden con estas expresiones, pero no los comodines
+> Ellos mismos. Es la cáscara, no los otros programas, que se ocupa de
+> Expansión de comodines, y este es otro ejemplo de diseño ortogonal.
 {: .callout}
 
 > ## Using Wildcards
@@ -111,8 +111,8 @@ $ wc *.pdb
 > 4. `ls ethane.*`
 {: .challenge}
 
-If we run `wc -l` instead of just `wc`,
-the output shows only the number of lines per file:
+Si ejecutamos `wc -l` en lugar de` wc`,
+La salida sólo muestra el número de líneas por archivo:
 
 ~~~
 $ wc -l *.pdb
@@ -130,27 +130,27 @@ $ wc -l *.pdb
 ~~~
 {: .output}
 
-We can also use `-w` to get only the number of words,
-or `-c` to get only the number of characters.
+También podemos usar `-w` para obtener sólo el número de palabras,
+O `-c` para obtener sólo el número de caracteres.
 
-Which of these files is shortest?
-It's an easy question to answer when there are only six files,
-but what if there were 6000?
-Our first step toward a solution is to run the command:
+¿Cuál de estos archivos es el más corto?
+Es una pregunta fácil de responder cuando sólo hay seis archivos,
+Pero ¿y si había 6000?
+Nuestro primer paso hacia una solución es ejecutar el comando:
 
 ~~~
 $ wc -l *.pdb > lengths.txt
 ~~~
 {: .bash}
 
-The greater than symbol, `>`, tells the shell to **redirect** the command's output
-to a file instead of printing it to the screen. (This is why there is no screen output:
-everything that `wc` would have printed has gone into the
-file `lengths.txt` instead.)  The shell will create
-the file if it doesn't exist. If the file exists, it will be
-silently overwritten, which may lead to data loss and thus requires
-some caution.
-`ls lengths.txt` confirms that the file exists:
+El mayor que el símbolo, `>`, le dice a la shell que ** redireccione ** la salida del comando
+A un archivo en lugar de imprimirlo a la pantalla. (Es por eso que no hay salida de pantalla:
+Todo lo que `wc` habría impreso ha entrado en el
+Archivo `lengths.txt` en su lugar.) El shell creará
+El archivo si no existe. Si el archivo existe, será
+Sobrescrita en silencio, lo que puede conducir a la pérdida de datos y
+Cierta precaución.
+`Ls lengths.txt` confirma que el archivo existe:
 
 ~~~
 $ ls lengths.txt
@@ -162,11 +162,11 @@ lengths.txt
 ~~~
 {: .output}
 
-We can now send the content of `lengths.txt` to the screen using `cat lengths.txt`.
-`cat` stands for "concatenate":
-it prints the contents of files one after another.
-There's only one file in this case,
-so `cat` just shows us what it contains:
+Ahora podemos enviar el contenido de `lengths.txt` a la pantalla usando` cat lengths.txt`.
+`Cat` significa" concatenate ":
+Imprime el contenido de los archivos uno tras otro.
+Sólo hay un archivo en este caso,
+Así `cat` sólo nos muestra lo que contiene:
 
 ~~~
 $ cat lengths.txt
@@ -184,22 +184,22 @@ $ cat lengths.txt
 ~~~
 {: .output}
 
-> ## Output Page by Page
+> ## Salida Página por página
 >
-> We'll continue to use `cat` in this lesson, for convenience and consistency,
-> but it has the disadvantage that it always dumps the whole file onto your screen.
-> More useful in practice is the command `less`,
-> which you use with `$ less lengths.txt`.
-> This displays a screenful of the file, and then stops.
-> You can go forward one screenful by pressing the spacebar,
-> or back one by pressing `b`.  Press `q` to quit.
+> Continuaremos usando `cat` en esta lección, por conveniencia y consistencia,
+> Pero tiene la desventaja de que siempre vuelca todo el archivo en la pantalla.
+> Más útil en la práctica es el comando `less`,
+> Que usas con `$ less lengths.txt`.
+> Esto muestra una pantalla del archivo y luego se detiene.
+> Puede avanzar una pantalla presionando la barra espaciadora,
+> O retroceda presionando `b`. Pulse `q` para salir.
 {: .callout}
 
-Now let's use the `sort` command to sort its contents.
-We will also use the `-n` flag to specify that the sort is
-numerical instead of alphabetical.
-This does *not* change the file;
-instead, it sends the sorted result to the screen:
+Ahora vamos a usar el comando `sort` para ordenar su contenido.
+También usaremos el indicador `-n` para especificar que el tipo es
+Numérico en lugar de alfabético.
+Esto * no * cambia el archivo;
+En su lugar, envía el resultado ordenado a la pantalla:
 
 ~~~
 $ sort -n lengths.txt
@@ -217,11 +217,11 @@ $ sort -n lengths.txt
 ~~~
 {: .output}
 
-We can put the sorted list of lines in another temporary file called `sorted-lengths.txt`
-by putting `> sorted-lengths.txt` after the command,
-just as we used `> lengths.txt` to put the output of `wc` into `lengths.txt`.
-Once we've done that,
-we can run another command called `head` to get the first few lines in `sorted-lengths.txt`:
+Podemos poner la lista ordenada de líneas en otro archivo temporal llamado `sorted-lengths.txt`
+Poniendo `> sorted-lengths.txt` después del comando,
+Así como usamos `> lengths.txt` para poner la salida de` wc` en `lengths.txt`.
+Una vez que hayamos hecho eso,
+Podemos ejecutar otro comando llamado `head` para obtener las primeras líneas en` sorted-lengths.txt`:
 
 ~~~
 $ sort -n lengths.txt > sorted-lengths.txt
@@ -234,34 +234,34 @@ $ head -n 1 sorted-lengths.txt
 ~~~
 {: .output}
 
-Using the parameter `-n 1` with `head` tells it that
-we only want the first line of the file;
-`-n 20` would get the first 20,
-and so on.
-Since `sorted-lengths.txt` contains the lengths of our files ordered from least to greatest,
-the output of `head` must be the file with the fewest lines.
+El uso del parámetro `-n 1` con` head` indica que
+Sólo queremos la primera línea del archivo;
+`-n 20` conseguiría los primeros 20,
+y así.
+Dado que `sorted-lengths.txt` contiene las longitudes de nuestros archivos ordenados de menor a mayor,
+La salida de `head` debe ser el archivo con menos líneas.
 
-> ## Redirecting to the same file
+> ## Redirigiendo al mismo archivo
 >
-> It's a very bad idea to try redirecting
-> the output of a command that operates on a file
-> to the same file. For example:
+> Es una mala idea intentar redireccionar
+> La salida de un comando que opera en un archivo
+> Al mismo archivo. Por ejemplo:
 >
 > ~~~
 > $ sort -n lengths.txt > lengths.txt
 > ~~~
 > {: .bash}
 >
-> Doing something like this may give you
-> incorrect results and/or delete
-> the contents of `lengths.txt`.
+> Hacer algo como esto puede darle
+> Resultados incorrectos y / o eliminar
+> El contenido de `lengths.txt`.
 {: .callout}
 
-If you think this is confusing,
-you're in good company:
-even once you understand what `wc`, `sort`, and `head` do,
-all those intermediate files make it hard to follow what's going on.
-We can make it easier to understand by running `sort` and `head` together:
+Si crees que esto es confuso,
+Usted está en buena compañía:
+Incluso una vez que entienda lo que `wc`,` sort` y `head`,
+Todos esos archivos intermedios hacen difícil seguir lo que está pasando.
+Podemos hacerlo más fácil de entender ejecutando `sort` y` head` juntos:
 
 ~~~
 $ sort -n lengths.txt | head -n 1
@@ -273,19 +273,19 @@ $ sort -n lengths.txt | head -n 1
 ~~~
 {: .output}
 
-The vertical bar, `|`, between the two commands is called a **pipe**.
-It tells the shell that we want to use
-the output of the command on the left
-as the input to the command on the right.
-The computer might create a temporary file if it needs to,
-or copy data from one program to the other in memory,
-or something else entirely;
-we don't have to know or care.
+La barra vertical, `|`, entre los dos comandos se denomina un **pipe**.
+Le dice a la shell que queremos usar
+La salida del comando a la izquierda
+Como entrada al comando de la derecha.
+El equipo puede crear un archivo temporal si es necesario,
+O copiar datos de un programa a otro en la memoria,
+O algo más completamente;
+No tenemos que saber o cuidar.
 
-Nothing prevents us from chaining pipes consecutively.
-That is, we can for example send the output of `wc` directly to `sort`,
-and then the resulting output to `head`.
-Thus we first use a pipe to send the output of `wc` to `sort`:
+Nada nos impide encadenar pipes consecutivamente.
+Es decir, podemos por ejemplo enviar la salida de `wc` directamente a` sort`,
+Y luego la salida resultante a `head`.
+Así, primero usamos un tubo para enviar la salida de `wc` a` sort`:
 
 ~~~
 $ wc -l *.pdb | sort -n
@@ -303,7 +303,7 @@ $ wc -l *.pdb | sort -n
 ~~~
 {: .output}
 
-And now we send the output of this pipe, through another pipe, to `head`, so that the full pipeline becomes:
+Y ahora enviamos la salida de este pipe, a través de otro pipe, a `head`, para que el pipe completo se convierta en:
 
 ~~~
 $ wc -l *.pdb | sort -n | head -n 1
@@ -315,90 +315,90 @@ $ wc -l *.pdb | sort -n | head -n 1
 ~~~
 {: .output}
 
-This is exactly like a mathematician nesting functions like *log(3x)*
-and saying "the log of three times *x*".
-In our case,
-the calculation is "head of sort of line count of `*.pdb`".
+Esto es exactamente como un matemático anidando funciones como * log (3x) *
+Y diciendo "el registro de tres veces * x *".
+En nuestro caso,
+El cálculo es "head of sort of line count of `*.pdb` ".
 
-Here's what actually happens behind the scenes when we create a pipe.
-When a computer runs a program --- any program --- it creates a **process**
-in memory to hold the program's software and its current state.
-Every process has an input channel called **standard input**.
-(By this point, you may be surprised that the name is so memorable, but don't worry:
-most Unix programmers call it "stdin").
-Every process also has a default output channel called **standard output**
-(or "stdout"). A third output channel called **standard error** (stderr) also 
-exists. This channel is typically used for error or diagnostic messages, and it
-allows a user to pipe the output of one program into another while still receiving 
-error messages in the terminal. 
+Esto es lo que realmente sucede detrás de las escenas cuando creamos un tubo.
+Cuando una computadora ejecuta un programa --- cualquier programa --- crea un ** proceso **
+En memoria para almacenar el software del programa y su estado actual.
+Cada proceso tiene un canal de entrada llamado ** entrada estándar **.
+(Por este punto, puede ser sorprendido que el nombre es tan memorable, pero no te preocupes:
+La mayoría de los programadores de Unix lo llaman "stdin").
+Cada proceso también tiene un canal de salida predeterminado llamado ** salida estándar **
+(O "stdout"). Un tercer canal de salida llamado ** error estándar ** (stderr) también
+Existe. Este canal suele utilizarse para mensajes de error o de diagnóstico y
+Permite al usuario canalizar la salida de un programa a otro mientras sigue recibiendo
+Mensajes de error en el terminal.
 
-The shell is actually just another program.
-Under normal circumstances,
-whatever we type on the keyboard is sent to the shell on its standard input,
-and whatever it produces on standard output is displayed on our screen.
-When we tell the shell to run a program,
-it creates a new process
-and temporarily sends whatever we type on our keyboard to that process's standard input,
-and whatever the process sends to standard output to the screen.
+El shell es realmente apenas otro programa.
+Bajo circunstancias normales,
+Lo que tecleamos en el teclado se envía a la shell en su entrada estándar,
+Y lo que produce en la salida estándar se muestra en nuestra pantalla.
+Cuando le decimos al shell que ejecute un programa,
+Crea un nuevo proceso
+Y envía temporalmente lo que tecleamos en nuestro teclado a la entrada estándar de ese proceso,
+Y lo que el proceso envía a la salida estándar a la pantalla.
 
-Here's what happens when we run `wc -l *.pdb > lengths.txt`.
-The shell starts by telling the computer to create a new process to run the `wc` program.
-Since we've provided some filenames as parameters,
-`wc` reads from them instead of from standard input.
-And since we've used `>` to redirect output to a file,
-the shell connects the process's standard output to that file.
+Esto es lo que ocurre cuando ejecutamos `wc -l *.pdb > lengths.txt`.
+El shell comienza diciéndole a la computadora que cree un nuevo proceso para ejecutar el programa `wc`.
+Como hemos proporcionado algunos nombres de archivo como parámetros,
+`Wc` lee de ellos en vez de la entrada estándar.
+Y puesto que hemos utilizado `>` para redirigir la salida a un archivo,
+El shell conecta la salida estándar del proceso a ese archivo.
 
-If we run `wc -l *.pdb | sort -n` instead,
-the shell creates two processes
-(one for each process in the pipe)
-so that `wc` and `sort` run simultaneously.
-The standard output of `wc` is fed directly to the standard input of `sort`;
-since there's no redirection with `>`,
-`sort`'s output goes to the screen.
-And if we run `wc -l *.pdb | sort -n | head -n 1`,
-we get three processes with data flowing from the files,
-through `wc` to `sort`,
-and from `sort` through `head` to the screen.
+Si ejecutamos `wc -l * .pdb | Ordenar -n` en su lugar,
+El shell crea dos procesos
+(Uno para cada proceso en el pipe)
+De modo que `wc` y` sort` funcionen simultáneamente.
+La salida estándar de `wc` se alimenta directamente a la entrada estándar de `sort`;
+Ya que no hay redirección con `>`,
+La salida `sort` va a la pantalla.
+Y si ejecutamos `wc -l * .pdb | sort -n | head -n 1`,
+Obtenemos tres procesos con datos que fluyen de los archivos,
+A través de `wc` a` sort`,
+Y de `sort` a` head` a la pantalla.
 
 ![Redirects and Pipes](../fig/redirects-and-pipes.png)
 
-This simple idea is why Unix has been so successful.
-Instead of creating enormous programs that try to do many different things,
-Unix programmers focus on creating lots of simple tools that each do one job well,
-and that work well with each other.
-This programming model is called "pipes and filters".
-We've already seen pipes;
-a **filter** is a program like `wc` or `sort`
-that transforms a stream of input into a stream of output.
-Almost all of the standard Unix tools can work this way:
-unless told to do otherwise,
-they read from standard input,
-do something with what they've read,
-and write to standard output.
+Esta sencilla idea es por qué Unix ha tenido tanto éxito.
+En lugar de crear enormes programas que tratan de hacer muchas cosas diferentes,
+Los programadores de Unix se centran en crear muchas herramientas simples que cada uno haga un trabajo bien,
+Y que funcionan bien entre sí.
+Este modelo de programación se llama "pipes y filters".
+Ya hemos visto pipes;
+Un ** filtro ** es un programa como `wc` o` sort`
+Que transforma una corriente de entrada en una corriente de salida.
+Casi todas las herramientas Unix estándar pueden funcionar de esta manera:
+A menos que se le indique que haga lo contrario,
+Que leen de entrada estándar,
+Hacer algo con lo que han leído,
+Y escribir en la salida estándar.
 
-The key is that any program that reads lines of text from standard input
-and writes lines of text to standard output
-can be combined with every other program that behaves this way as well.
-You can *and should* write your programs this way
-so that you and other people can put those programs into pipes to multiply their power.
+La clave es que cualquier programa que lea líneas de texto de entrada estándar
+Y escribe líneas de texto en la salida estándar
+Puede combinarse con cualquier otro programa que se comporte de esta manera también.
+Usted puede * y debe * escribir sus programas de esta manera
+Para que usted y otras personas puedan poner esos programas en pipes para multiplicar su poder.
 
-> ## Redirecting Input
+> ## Redireccionamiento de entrada
 >
-> As well as using `>` to redirect a program's output, we can use `<` to
-> redirect its input, i.e., to read from a file instead of from standard
-> input. For example, instead of writing `wc ammonia.pdb`, we could write
-> `wc < ammonia.pdb`. In the first case, `wc` gets a command line
-> parameter telling it what file to open. In the second, `wc` doesn't have
-> any command line parameters, so it reads from standard input, but we
-> have told the shell to send the contents of `ammonia.pdb` to `wc`'s
-> standard input.
+> Además de usar `>` para redirigir la salida de un programa, podemos usar `<` to
+> Redirigir su entrada, es decir, para leer un archivo en lugar de un archivo estándar
+> Entrada. Por ejemplo, en lugar de escribir `wc ammonia.pdb`, podríamos escribir
+> `Wc <ammonia.pdb`. En el primer caso, `wc` obtiene una línea de comandos
+> Parámetro diciéndole qué archivo abrir. En el segundo, `wc` no tiene
+> Cualquier parámetro de la línea de comandos, por lo que se lee desde la entrada estándar, pero
+> Han dicho al shell que envíe el contenido de `ammonia.pdb` a` wc`
+> Entrada estándar.
 {: .callout}
 
 ## Nelle's Pipeline: Checking Files
 
-Nelle has run her samples through the assay machines
-and created 1520 files in the `north-pacific-gyre/2012-07-03` directory described earlier.
-As a quick sanity check, starting from her home directory, Nelle types:
+Nelle ha corrido sus muestras a través de las máquinas de ensayo
+Y creó 1520 archivos en el directorio `north-pacific-gyre / 2012-07-03` descrito anteriormente.
+Como un control de cordura rápida, a partir de su directorio de inicio, los tipos Nelle:
 
 ~~~
 $ cd north-pacific-gyre/2012-07-03
@@ -406,7 +406,7 @@ $ wc -l *.txt
 ~~~
 {: .bash}
 
-The output is 1520 lines that look like this:
+La salida es 1520 líneas que se parecen a esto:
 
 ~~~
 300 NENE01729A.txt
@@ -419,7 +419,7 @@ The output is 1520 lines that look like this:
 ~~~
 {: .output}
 
-Now she types this:
+Ahora escribe esto:
 
 ~~~
 $ wc -l *.txt | sort -n | head -n 5
@@ -435,13 +435,13 @@ $ wc -l *.txt | sort -n | head -n 5
 ~~~
 {: .output}
 
-Whoops: one of the files is 60 lines shorter than the others.
-When she goes back and checks it,
-she sees that she did that assay at 8:00 on a Monday morning --- someone
-was probably in using the machine on the weekend,
-and she forgot to reset it.
-Before re-running that sample,
-she checks to see if any files have too much data:
+Whoops: uno de los archivos es 60 líneas más corto que los otros.
+Cuando ella vuelve y lo comprueba,
+Ella ve que hizo ese ensayo a las 8:00 un lunes por la mañana --- alguien
+Fue probablemente en el uso de la máquina en el fin de semana,
+Y se olvidó de restablecerlo.
+Antes de volver a ejecutar esa muestra,
+Ella comprueba si algunos archivos tienen demasiados datos:
 
 ~~~
 $ wc -l *.txt | sort -n | tail -n 5
@@ -457,11 +457,11 @@ $ wc -l *.txt | sort -n | tail -n 5
 ~~~
 {: .output}
 
-Those numbers look good --- but what's that 'Z' doing there in the third-to-last line?
-All of her samples should be marked 'A' or 'B';
-by convention,
-her lab uses 'Z' to indicate samples with missing information.
-To find others like it, she does this:
+Estes numeros parecen buenos --- pero ¿qué es ese 'Z' haciendo allí en la línea de tercero a la última?
+Todas sus muestras deben estar marcadas con "A" o "B";
+por convención,
+Su laboratorio utiliza 'Z' para indicar muestras con información que falta.
+Para encontrar a otras personas como ella, ella hace esto:
 
 ~~~
 $ ls *Z.txt
@@ -473,18 +473,17 @@ NENE01971Z.txt    NENE02040Z.txt
 ~~~
 {: .output}
 
-Sure enough,
-when she checks the log on her laptop,
-there's no depth recorded for either of those samples.
-Since it's too late to get the information any other way,
-she must exclude those two files from her analysis.
-She could just delete them using `rm`,
-but there are actually some analyses she might do later where depth doesn't matter,
-so instead, she'll just be careful later on to select files using the wildcard expression `*[AB].txt`.
-As always,
-the `*` matches any number of characters;
-the expression `[AB]` matches either an 'A' or a 'B',
-so this matches all the valid data files she has.
+Cuando ella comprueba el registro en su computadora portátil,
+No hay profundidad registrada para ninguna de esas muestras.
+Ya que es demasiado tarde para obtener la información de otra manera,
+Ella debe excluir esos dos archivos de su análisis.
+Podría simplemente borrarlos usando `rm`,
+Pero en realidad hay algunos análisis que podría hacer más tarde, donde la profundidad no importa,
+Por lo que en su lugar, sólo tendrá cuidado más adelante para seleccionar archivos utilizando la expresión comodín `* [AB] .txt`.
+Como siempre,
+El `*` coincide con cualquier número de caracteres;
+La expresión «[AB]» coincide con una «A» o una «B»,
+Por lo que coincide con todos los archivos de datos válidos que tiene.
 
 > ## What Does `sort -n` Do?
 >
