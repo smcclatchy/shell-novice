@@ -123,4 +123,19 @@ Sólo se necesitan dos minutos para configurar cada uno.
 Dado que su laboratorio tiene ocho máquinas de ensayo que puede utilizar en paralelo,
 Este paso "sólo" durará unas dos semanas.
 
-La mala noticia es que si tiene que ejecutar `goostat
+La mala noticia es que si tiene que ejecutar `goostat` y` goodiff` a mano,
+Ella tendrá que ingresar los nombres de los archivos y haga clic en "Aceptar" 46,370 veces
+(1520 carreras de `goostat`, más 300 * 299/2 (la mitad de 300 veces 299) se ejecuta de` goodiff`).
+A los 30 segundos de cada uno,
+Que llevará más de dos semanas.
+No sólo se perdería su plazo de entrega de papel,
+Las posibilidades de que escriba todos los comandos correctos son prácticamente cero.
+
+Las siguientes lecciones explorarán lo que debería hacer en su lugar.
+Más específicamente,
+Explican cómo puede usar un shell de comandos
+Para automatizar los pasos repetitivos en su pipeline de procesamiento
+Para que su computadora pueda trabajar las 24 horas del día mientras escribe su trabajo.
+Como un bono,
+Una vez que ha puesto una tubería de procesamiento juntos,
+Ella podrá usarlo de nuevo cada vez que recoja más datos.
