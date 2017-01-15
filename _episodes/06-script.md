@@ -18,15 +18,15 @@ keypoints:
 - "Letting users decide what files to process is more flexible and more consistent with built-in Unix commands."
 ---
 
-We are finally ready to see what makes the shell such a powerful programming environment.
-We are going to take the commands we repeat frequently and save them in files
-so that we can re-run all those operations again later by typing a single command.
-For historical reasons,
-a bunch of commands saved in a file is usually called a **shell script**,
-but make no mistake:
-these are actually small programs.
+Finalmente estamos listos para ver lo que hace que la shell sea un entorno de programación tan potente.
+Vamos a tomar los comandos que repetimos con frecuencia y guardarlos en archivos
+De modo que podemos volver a ejecutar todas esas operaciones de nuevo más tarde escribiendo un solo comando.
+Por razones históricas,
+Un montón de comandos guardados en un archivo se suele llamar un ** shell script **,
+Pero no se equivoquen:
+Estos son en realidad pequeños programas.
 
-Let's start by going back to `molecules/` and putting the following line into a new file, `middle.sh`:
+Comencemos por volver a `moléculas /` y poniendo la siguiente línea en un nuevo archivo, `middle.sh`:
 
 ~~~
 $ cd molecules
@@ -34,28 +34,28 @@ $ nano middle.sh
 ~~~
 {: .bash}
 
-The command `nano middle.sh` opens the file `middle.sh` within the text editor "nano"
-(which runs within the shell).
-If the file does not exist, it will be created.
-We can use the text editor to directly edit the file---we'll simply insert the following line:
+El comando `nano middle.sh` abre el archivo` middle.sh` dentro del editor de texto "nano"
+(Que se ejecuta dentro de la concha).
+Si el archivo no existe, se creará.
+Podemos usar el editor de texto para editar directamente el archivo --- simplemente insertaremos la siguiente línea:
 
 ~~~
 head -n 15 octane.pdb | tail -n 5
 ~~~
 {: .source}
 
-This is a variation on the pipe we constructed earlier:
-it selects lines 11-15 of the file `octane.pdb`.
-Remember, we are *not* running it as a command just yet:
-we are putting the commands in a file.
+Esta es una variación de la tubería que construimos anteriormente:
+Selecciona las líneas 11-15 del archivo `octane.pdb`.
+Recuerde, no estamos * corriendo como un comando todavía:
+Estamos poniendo los comandos en un archivo.
 
-Then we save the file (`Ctrl-O` in nano),
- and exit the text editor (`Ctrl-X` in nano).
-Check that the directory `molecules` now contains a file called `middle.sh`.
+A continuación, guardamos el archivo (`Ctrl-O` en nano),
+  Y salir del editor de texto (`Ctrl-X` en nano).
+Compruebe que el directorio `moléculas` ahora contiene un archivo llamado` middle.sh`.
 
-Once we have saved the file,
-we can ask the shell to execute the commands it contains.
-Our shell is called `bash`, so we run the following command:
+Una vez que hayamos guardado el archivo,
+Podemos pedirle al shell que ejecute los comandos que contiene.
+Nuestro shell se llama `bash`, por lo que ejecutamos el siguiente comando:
 
 ~~~
 $ bash middle.sh
@@ -71,42 +71,42 @@ ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
 ~~~
 {: .output}
 
-Sure enough,
-our script's output is exactly what we would get if we ran that pipeline directly.
+Bastante seguro,
+La salida de nuestro guión es exactamente lo que obtendríamos si ejecutamos esa tubería directamente.
 
-> ## Text vs. Whatever
+> ## Texto vs. Lo que sea
 >
-> We usually call programs like Microsoft Word or LibreOffice Writer "text
-> editors", but we need to be a bit more careful when it comes to
-> programming. By default, Microsoft Word uses `.docx` files to store not
-> only text, but also formatting information about fonts, headings, and so
-> on. This extra information isn't stored as characters, and doesn't mean
-> anything to tools like `head`: they expect input files to contain
-> nothing but the letters, digits, and punctuation on a standard computer
-> keyboard. When editing programs, therefore, you must either use a plain
-> text editor, or be careful to save files as plain text.
+> Por lo general llamamos a programas como Microsoft Word o LibreOffice Writer "text
+> Editores ", pero tenemos que ser un poco más cuidadosos cuando se trata de
+> Programación. De forma predeterminada, Microsoft Word utiliza archivos .docx para almacenar no
+> Sólo texto, sino también formatear información sobre fuentes, encabezados y
+> Encendido. Esta información adicional no se almacena como caracteres y no significa
+> Nada a herramientas como `head`: esperan que los archivos de entrada contengan
+> Nada más que las letras, los dígitos y la puntuación en un equipo estándar
+> Teclado. Por lo tanto, al editar programas, debe utilizar un
+> Editor de texto, o tenga cuidado de guardar archivos como texto sin formato.
 {: .callout}
 
-What if we want to select lines from an arbitrary file?
-We could edit `middle.sh` each time to change the filename,
-but that would probably take longer than just retyping the command.
-Instead, let's edit `middle.sh` and make it more versatile:
+¿Qué pasa si queremos seleccionar líneas de un archivo arbitrario?
+Podríamos editar `middle.sh` cada vez para cambiar el nombre de archivo,
+Pero que probablemente llevaría más tiempo que simplemente volver a escribir el comando.
+En su lugar, vamos a editar `middle.sh` y hacerlo más versátil:
 
 ~~~
 $ nano middle.sh
 ~~~
 {: .bash}
 
-Now, within "nano", replace the text `octane.pdb` with the special variable called `$1`:
+Ahora, dentro de "nano", reemplace el texto `octane.pdb` con la variable especial llamada` $ 1`:
 
 ~~~
 head -n 15 "$1" | tail -n 5
 ~~~
 {: .output}
 
-Inside a shell script,
-`$1` means "the first filename (or other parameter) on the command line".
-We can now run our script like this:
+Dentro de un script de shell,
+`$ 1` significa" el primer nombre de archivo (u otro parámetro) en la línea de comandos ".
+Ahora podemos ejecutar nuestro script como este:
 
 ~~~
 $ bash middle.sh octane.pdb
@@ -140,15 +140,15 @@ ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00
 
 > ## Double-Quotes Around Arguments
 >
-> For the same reason that we put the loop variable inside double-quotes,
-> in case the filename happens to contain any spaces,
-> we surround `$1` with double-quotes.
+> Por la misma razón que ponemos la variable loop dentro de comillas dobles,
+> En caso de que el nombre de archivo contenga espacios,
+> Rodeamos `$ 1` con comillas dobles.
 {: .callout}
 
-We still need to edit `middle.sh` each time we want to adjust the range of lines,
-though.
-Let's fix that by using the special variables `$2` and `$3` for the
-number of lines to be passed to `head` and `tail` respectively:
+Aún necesitamos editar `middle.sh` cada vez que queramos ajustar el rango de líneas,
+aunque.
+Vamos a arreglar eso usando las variables especiales `$ 2` y` $ 3` para el
+Número de líneas que se pasarán respectivamente a `head` y` tail`:
 
 ~~~
 $ nano middle.sh
@@ -176,8 +176,8 @@ ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00
 ~~~
 {: .output}
 
-By changing the arguments to our command we can change our script's
-behaviour:
+Cambiando los argumentos a nuestro comando, podemos cambiar el script
+comportamiento:
 
 ~~~
 $ bash middle.sh pentane.pdb 20 5
@@ -193,9 +193,9 @@ TER      18              1
 ~~~
 {: .output}
 
-This works,
-but it may take the next person who reads `middle.sh` a moment to figure out what it does.
-We can improve our script by adding some **comments** at the top:
+Esto funciona,
+Pero puede tomar a la siguiente persona que lee `middle.sh` un momento para averiguar lo que hace.
+Podemos mejorar nuestro script agregando algunos ** comentarios ** en la parte superior:
 
 ~~~
 $ nano middle.sh
@@ -209,37 +209,37 @@ head -n "$2" "$1" | tail -n "$3"
 ~~~
 {: .output}
 
-A comment starts with a `#` character and runs to the end of the line.
-The computer ignores comments,
-but they're invaluable for helping people (including your future self) understand and use scripts.
-The only caveat is that each time you modify the script,
-you should check that the comment is still accurate:
-an explanation that sends the reader in the wrong direction is worse than none at all.
+Un comentario comienza con un caracter `#` y se ejecuta hasta el final de la línea.
+La computadora ignora los comentarios,
+Pero son invaluables para ayudar a la gente (incluyendo a tu futuro) a entender y usar scripts.
+La única advertencia es que cada vez que modifique el script,
+Debe comprobar que el comentario sigue siendo exacto:
+Una explicación que envía al lector en la dirección equivocada es peor que ninguna en absoluto.
 
-What if we want to process many files in a single pipeline?
-For example, if we want to sort our `.pdb` files by length, we would type:
+¿Qué sucede si queremos procesar muchos archivos en un único oleoducto?
+Por ejemplo, si queremos ordenar nuestros archivos `.pdb` por longitud, deberíamos escribir:
 
 ~~~
 $ wc -l *.pdb | sort -n
 ~~~
 {: .bash}
 
-because `wc -l` lists the number of lines in the files
-(recall that `wc` stands for 'word count', adding the `-l` flag means 'count lines' instead)
-and `sort -n` sorts things numerically.
-We could put this in a file,
-but then it would only ever sort a list of `.pdb` files in the current directory.
-If we want to be able to get a sorted list of other kinds of files,
-we need a way to get all those names into the script.
-We can't use `$1`, `$2`, and so on
-because we don't know how many files there are.
-Instead, we use the special variable `$@`,
-which means,
-"All of the command-line parameters to the shell script."
-We also should put `$@` inside double-quotes
-to handle the case of parameters containing spaces
-(`"$@"` is equivalent to `"$1"` `"$2"` ...)
-Here's an example:
+Porque `wc -l` lista el número de líneas en los archivos
+(Recuerde que `wc` significa 'word count', agregando el` -l` significa 'count lines' en su lugar)
+Y `sort -n` ordena las cosas numéricamente.
+Podríamos poner esto en un archivo,
+Pero entonces sólo podría ordenar una lista de archivos `.pdb` en el directorio actual.
+Si queremos ser capaces de obtener una lista ordenada de otros tipos de archivos,
+Necesitamos una manera de conseguir todos esos nombres en el guión.
+No podemos usar `$ 1`,` $2`, y así sucesivamente
+Porque no sabemos cuántos archivos hay.
+En su lugar, utilizamos la variable especial `$ @`,
+lo que significa,
+"Todos los parámetros de la línea de comandos a la secuencia de comandos de shell."
+También debemos poner `$ @` dentro de comillas dobles
+Para manejar el caso de los parámetros que contienen espacios
+(`"$@"` Es equivalente a `"$1"` `"$2"`...)
+He aquí un ejemplo:
 
 ~~~
 $ nano sorted.sh
@@ -270,38 +270,37 @@ $ bash sorted.sh *.pdb ../creatures/*.dat
 ~~~
 {: .output}
 
-> ## Why Isn't It Doing Anything?
+> ## ¿Por qué no está haciendo nada?
 >
-> What happens if a script is supposed to process a bunch of files, but we
-> don't give it any filenames? For example, what if we type:
+> ¿Qué sucede si se supone que un script procesa un montón de archivos, pero nosotros
+> No le dan nombres de archivo? Por ejemplo, ¿qué pasa si escribimos:
 >
 > ~~~
 > $ bash sorted.sh
 > ~~~
 > {: .bash}
 >
-> but don't say `*.dat` (or anything else)? In this case, `$@` expands to
-> nothing at all, so the pipeline inside the script is effectively:
+> Pero no diga `* .dat` (o cualquier otra cosa)? En este caso, `$ @` se expande a
+> Nada en absoluto, por lo que el pipe dentro del script es efectivamente:
 >
 > ~~~
 > $ wc -l | sort -n
 > ~~~
 > {: .bash}
 >
-> Since it doesn't have any filenames, `wc` assumes it is supposed to
-> process standard input, so it just sits there and waits for us to give
-> it some data interactively. From the outside, though, all we see is it
-> sitting there: the script doesn't appear to do anything.
+> Dado que no tiene ningún nombre de archivo, `wc` supone que se supone que
+> Proceso de entrada estándar, por lo que sólo se sienta allí y espera a que nos dé
+> Algunos datos interactivamente. Desde el exterior, sin embargo, todo lo que vemos es
+> Sentado allí: el script no parece hacer nada.
 {: .callout}
 
-
-Suppose we have just run a series of commands that did something useful --- for example,
-that created a graph we'd like to use in a paper.
-We'd like to be able to re-create the graph later if we need to,
-so we want to save the commands in a file.
-Instead of typing them in again
-(and potentially getting them wrong)
-we can do this:
+Suponga que acabamos de ejecutar una serie de comandos que hicieron algo útil --- por ejemplo,
+Que creó un gráfico que nos gustaría utilizar en un documento.
+Nos gustaría poder volver a crear el gráfico más tarde si es necesario,
+Por lo que queremos guardar los comandos en un archivo.
+En lugar de escribirlas de nuevo
+(Y potencialmente equivocarse)
+Podemos hacer esto:
 
 ~~~
 $ history | tail -n 5 > redo-figure-3.sh
@@ -319,29 +318,29 @@ The file `redo-figure-3.sh` now contains:
 ~~~
 {: .source}
 
-After a moment's work in an editor to remove the serial numbers on the commands,
-and to remove the final line where we called the `history` command,
-we have a completely accurate record of how we created that figure.
+Después de un momento de trabajo en un editor para eliminar los números de serie en los comandos,
+Y para eliminar la línea final donde llamamos el comando `history`,
+Tenemos un registro completamente exacto de cómo creamos esa figura.
 
-In practice, most people develop shell scripts by running commands at the shell prompt a few times
-to make sure they're doing the right thing,
-then saving them in a file for re-use.
-This style of work allows people to recycle
-what they discover about their data and their workflow with one call to `history`
-and a bit of editing to clean up the output
-and save it as a shell script.
+En la práctica, la mayoría de las personas desarrollan scripts de shell ejecutando comandos en el indicador de shell varias veces
+Para asegurarse de que están haciendo lo correcto,
+A continuación, guardarlos en un archivo para su reutilización.
+Este estilo de trabajo permite a la gente reciclar
+Qué descubren sobre sus datos y su flujo de trabajo con una llamada a `history`
+Y un poco de edición para limpiar la salida
+Y guárdelo como un script de shell.
 
-## Nelle's Pipeline: Creating a Script
+## Pipeline de Nelle: Creación de una secuencia de comandos
 
-An off-hand comment from her supervisor has made Nelle realize that
-she should have provided a couple of extra parameters to `goostats` when she processed her files.
-This might have been a disaster if she had done all the analysis by hand,
-but thanks to `for` loops,
-it will only take a couple of hours to re-do.
+Un comentario extraño de su supervisor ha hecho que Nelle se dé cuenta de que
+Ella debería haber proporcionado un par de parámetros adicionales a `goostats` cuando procesó sus archivos.
+Esto podría haber sido un desastre si hubiera hecho todo el análisis a mano,
+Pero gracias a los bucles `for`,
+Sólo tomará un par de horas para volver a hacer.
 
-But experience has taught her that if something needs to be done twice,
-it will probably need to be done a third or fourth time as well.
-She runs the editor and writes the following:
+Pero la experiencia le ha enseñado que si algo tiene que hacerse dos veces,
+Probablemente tendrá que hacerse una tercera o cuarta vez también.
+Ella dirige el editor y escribe lo siguiente:
 
 ~~~
 # Calculate reduced stats for data files at J = 100 c/bp.
@@ -353,9 +352,9 @@ done
 ~~~
 {: .bash}
 
-(The parameters `-J 100` and `-r` are the ones her supervisor said she should have used.)
-She saves this in a file called `do-stats.sh`
-so that she can now re-do the first stage of her analysis by typing:
+(Los parámetros `-J 100` y` -r` son los que su supervisor dijo que debería haber usado.)
+Guarda esto en un archivo llamado `do-stats.sh`
+Para que ahora pueda volver a hacer la primera etapa de su análisis escribiendo:
 
 ~~~
 $ bash do-stats.sh *[AB].txt
@@ -369,12 +368,12 @@ $ bash do-stats.sh *[AB].txt | wc -l
 ~~~
 {: .bash}
 
-so that the output is just the number of files processed
-rather than the names of the files that were processed.
+De modo que la salida es sólo el número de archivos procesados
+En lugar de los nombres de los archivos que se procesaron.
 
-One thing to note about Nelle's script is that
-it lets the person running it decide what files to process.
-She could have written it as:
+Una cosa a tener en cuenta sobre el guión de Nelle es que
+Permite a la persona que lo ejecuta decidir qué archivos procesar.
+Podría haberlo escrito así:
 
 ~~~
 # Calculate reduced stats for  A and Site B data files at J = 100 c/bp.
@@ -386,16 +385,16 @@ done
 ~~~
 {: .bash}
 
-The advantage is that this always selects the right files:
-she doesn't have to remember to exclude the 'Z' files.
-The disadvantage is that it *always* selects just those files --- she can't run it on all files
-(including the 'Z' files),
-or on the 'G' or 'H' files her colleagues in Antarctica are producing,
-without editing the script.
-If she wanted to be more adventurous,
-she could modify her script to check for command-line parameters,
-and use `*[AB].txt` if none were provided.
-Of course, this introduces another tradeoff between flexibility and complexity.
+La ventaja es que siempre selecciona los archivos correctos:
+Ella no tiene que recordar excluir los archivos 'Z'.
+La desventaja es que * siempre * selecciona sólo esos archivos --- ella no puede ejecutarlo en todos los archivos
+(Incluidos los ficheros "Z"),
+O en los archivos 'G' o 'H' que sus colegas de la Antártida están produciendo,
+Sin editar el guión.
+Si quería ser más aventurera,
+Ella podría modificar su script para comprobar los parámetros de la línea de comandos,
+Y utilice `* [AB] .txt` si no se ha proporcionado ninguno.
+Por supuesto, esto introduce otro equilibrio entre flexibilidad y complejidad.
 
 > ## Variables in Shell Scripts
 >
