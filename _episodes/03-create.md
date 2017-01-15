@@ -257,7 +257,7 @@ $ rm thesis
 {: .bash}
 
 ~~~
-rm: cannot remove `thesis': Is a directory
+rm: cannot remove `thesis`: Is a directory
 ~~~
 {: .error}
 
@@ -271,12 +271,12 @@ $ rm -r thesis
 ~~~
 {: .bash}
 
-> ## With Great Power Comes Great Responsibility
+> ## Con Gran Poder Viene Gran Responsabilidad
 >
-> Removing the files in a directory recursively can be very dangerous
-> operation. If we're concerned about what we might be deleting we can
-> add the "interactive" flag `-i` to `rm` which will ask us for confirmation
-> before each step
+> Eliminar los archivos en un directorio recursivamente puede ser muy peligroso
+> Operación. Si nos preocupa lo que podríamos eliminar, podemos
+> Añada la bandera "interactiva" `-i` a` rm` que nos pedirá confirmación
+> Antes de cada paso
 >
 > ~~~
 > $ rm -r -i thesis
@@ -286,13 +286,13 @@ $ rm -r thesis
 > ~~~
 > {: .bash}
 >
-> This removes everything in the directory, then the directory itself, asking
-> at each step for you to confirm the deletion.
+> Esto elimina todo en el directorio, luego el propio directorio, preguntando
+> En cada paso para que confirme la eliminación.
 {: .callout}
 
-Let's create that directory and file one more time.
-(Note that this time we're running `nano` with the path `thesis/draft.txt`,
-rather than going into the `thesis` directory and running `nano` on `draft.txt` there.)
+Vamos a crear ese directorio y archivo una vez más.
+(Tenga en cuenta que esta vez estamos ejecutando `nano` con la ruta de acceso` thesis / draft.txt`,
+En lugar de ir al directorio `thesis` y ejecutar` nano` en `draft.txt` allí.)
 
 ~~~
 $ pwd
@@ -316,22 +316,22 @@ draft.txt
 ~~~
 {: .output}
 
-`draft.txt` isn't a particularly informative name,
-so let's change the file's name using `mv`,
-which is short for "move":
+`Draft.txt` no es un nombre particularmente informativo,
+Así que cambiemos el nombre del archivo usando `mv`,
+Que es la abreviatura de "mover":
 
 ~~~
 $ mv thesis/draft.txt thesis/quotes.txt
 ~~~
 {: .bash}
 
-The first parameter tells `mv` what we're "moving",
-while the second is where it's to go.
-In this case,
-we're moving `thesis/draft.txt` to `thesis/quotes.txt`,
-which has the same effect as renaming the file.
-Sure enough,
-`ls` shows us that `thesis` now contains one file called `quotes.txt`:
+El primer parámetro dice `mv` lo que estamos moviendo,
+Mientras que el segundo es donde se debe ir.
+En este caso,
+Nos estamos moviendo `thesis / draft.txt` a` thesis / quotes.txt`,
+Que tiene el mismo efecto que cambiar el nombre del archivo.
+Bastante seguro,
+`Ls` nos muestra que` thesis` ahora contiene un archivo llamado `quotes.txt`:
 
 ~~~
 $ ls thesis
@@ -343,39 +343,38 @@ quotes.txt
 ~~~
 {: .output}
 
-One has to be careful when specifying the target file name, since `mv` will
-silently overwrite any existing file with the same name, which could
-lead to data loss. An additional flag, `mv -i` (or `mv --interactive`),
-can be used to make `mv` ask you for confirmation before overwriting.
+Hay que tener cuidado al especificar el nombre del archivo de destino, ya que `mv`
+Sobrescribir silenciosamente cualquier archivo existente con el mismo nombre,
+Conducen a la pérdida de datos. Un indicador adicional, `mv -i` (o` mv --interactive`),
+Se puede utilizar para hacer `mv` pedirle confirmación antes de sobrescribir.
 
-Just for the sake of consistency,
-`mv` also works on directories --- there is no separate `mvdir` command.
+Sólo por razones de coherencia,
+`mv` también funciona en directorios --- no hay un `mvdir` separado comando.
 
-Let's move `quotes.txt` into the current working directory.
-We use `mv` once again,
-but this time we'll just use the name of a directory as the second parameter
-to tell `mv` that we want to keep the filename,
-but put the file somewhere new.
-(This is why the command is called "move".)
-In this case,
-the directory name we use is the special directory name `.` that we mentioned earlier.
+Vamos a mover `quotes.txt` al directorio de trabajo actual.
+Utilizamos `mv` una vez más,
+Pero esta vez sólo usaremos el nombre de un directorio como el segundo parámetro
+Para decir `mv` que queremos mantener el nombre de archivo,
+Pero poner el archivo en algún lugar nuevo.
+(Es por eso que el comando se llama "mover".)
+En este caso,
+El nombre de directorio que usamos es el nombre de directorio especial `.` que mencionamos anteriormente.
 
 ~~~
 $ mv thesis/quotes.txt .
 ~~~
 {: .bash}
 
-The effect is to move the file from the directory it was in to the current working directory.
-`ls` now shows us that `thesis` is empty:
+El efecto es mover el archivo desde el directorio en el que estaba en el directorio de trabajo actual.
+`ls` ahora nos muestra que `thesis` está vacío:
 
 ~~~
 $ ls thesis
 ~~~
 {: .bash}
 
-Further,
-`ls` with a filename or directory name as a parameter only lists that file or directory.
-We can use this to see that `quotes.txt` is still in our current directory:
+`ls` con un nombre de archivo o un nombre de directorio como un parámetro sólo lista ese archivo o directorio.
+Podemos usar esto para ver que `quotes.txt` todavía está en nuestro directorio actual:
 
 ~~~
 $ ls quotes.txt
@@ -387,11 +386,11 @@ quotes.txt
 ~~~
 {: .output}
 
-The `cp` command works very much like `mv`,
-except it copies a file instead of moving it.
-We can check that it did the right thing using `ls`
-with two paths as parameters --- like most Unix commands,
-`ls` can be given multiple paths at once:
+El comando `cp` funciona muy bien como` mv`,
+Excepto que copia un archivo en lugar de moverlo.
+Podemos comprobar que hizo lo correcto usando `ls`
+Con dos caminos como parámetros --- como la mayoría de los comandos Unix,
+`Ls` puede recibir múltiples rutas a la vez:
 
 ~~~
 $ cp quotes.txt thesis/quotations.txt
@@ -404,9 +403,9 @@ quotes.txt   thesis/quotations.txt
 ~~~
 {: .output}
 
-To prove that we made a copy,
-let's delete the `quotes.txt` file in the current directory
-and then run that same `ls` again.
+Para probar que hicimos una copia,
+Vamos a eliminar el archivo `quotes.txt` en el directorio actual
+Y luego ejecutar el mismo `ls` de nuevo.
 
 ~~~
 $ rm quotes.txt
@@ -420,31 +419,31 @@ thesis/quotations.txt
 ~~~
 {: .error}
 
-This time it tells us that it can't find `quotes.txt` in the current directory,
-but it does find the copy in `thesis` that we didn't delete.
+Esta vez nos dice que no puede encontrar `quotes.txt` en el directorio actual,
+Pero encuentra la copia en `thesis` que no hemos borrado.
 
-> ## What's In A Name?
+> ## ¿Qué hay en un nombre?
 >
-> You may have noticed that all of Nelle's files' names are "something dot
-> something", and in this part of the lesson, we always used the extension
-> `.txt`.  This is just a convention: we can call a file `mythesis` or
-> almost anything else we want. However, most people use two-part names
-> most of the time to help them (and their programs) tell different kinds
-> of files apart. The second part of such a name is called the
-> **filename extension**, and indicates
-> what type of data the file holds: `.txt` signals a plain text file, `.pdf`
-> indicates a PDF document, `.cfg` is a configuration file full of parameters
-> for some program or other, `.png` is a PNG image, and so on.
+> Usted puede haber notado que todos los nombres de los archivos de Nelle son "algo punto
+> Algo ", y en esta parte de la lección, usamos siempre la extensión
+> `.txt`. Esto es sólo una convención: podemos llamar a un archivo `mythesis` o
+> Casi cualquier cosa que queramos. Sin embargo, la mayoría de la gente usa nombres de dos partes
+> La mayor parte del tiempo para ayudarles (y sus programas) a contar diferentes tipos
+> De archivos separados. La segunda parte de este nombre se llama la
+> ** extensión de nombre de archivo ** e indica
+> Qué tipo de datos contiene el archivo: `.txt` señala un archivo de texto sin formato,` .pdf`
+> Indica un documento PDF, `.cfg` es un archivo de configuración lleno de parámetros
+> Para algún programa u otro, `.png` es una imagen PNG, y así sucesivamente.
 >
-> This is just a convention, albeit an important one. Files contain
-> bytes: it's up to us and our programs to interpret those bytes
-> according to the rules for plain text files, PDF documents, configuration
-> files, images, and so on.
+> Esto es sólo una convención, aunque importante. Los archivos contienen
+> Bytes: depende de nosotros y de nuestros programas interpretar esos bytes
+> De acuerdo con las reglas para archivos de texto sin formato, documentos PDF, configuración
+> Archivos, imágenes, etc.
 >
-> Naming a PNG image of a whale as `whale.mp3` doesn't somehow
-> magically turn it into a recording of whalesong, though it *might*
-> cause the operating system to try to open it with a music player
-> when someone double-clicks it.
+> Nombrar una imagen PNG de una ballena como `whale.mp3` no de alguna manera
+> Mágicamente convertirlo en una grabación de whalesong, aunque *podría*
+> Hacer que el sistema operativo intente abrirlo con un reproductor de música
+> Cuando alguien hace doble clic en él.
 {: .callout}
 
 > ## Renaming Files
