@@ -20,123 +20,107 @@ keypoints:
 - "The shell's main disadvantages are its primarily textual nature and how cryptic its commands and operation can be."
 ---
 
-At a high level, computers do four things:
+En un nivel alto, las computadoras hacen cuatro cosas:
 
--   run programs
--   store data
--   communicate with each other
--   and interact with us
+- ejecutar programas
+- Almacenamiento de datos
+- comunicarse entre sí
+- e interactuar con nosotros
 
-They can do the last of these in many different ways,
-including direct brain-computer and speech interfaces.
-Since these hardware interfaces are still in their infancy,
-we still have to rely on screens, mice, touchpads and keyboards.
-Although most modern desktop operating systems communicate with their human users by
-means of windows, icons and pointers, these software technologies didn't become
-widespread until 1980s. The roots of such *graphical user interfaces*  go back
-to Doug Engelbart's work in the 1960s, which you can see in what has been
-called "[The Mother of All Demos](http://www.youtube.com/watch?v=a11JDLBXtPQ)".
+Pueden hacer el último de estos en muchas maneras diferentes,
+Incluyendo interfaces cerebro-computadora y de habla directas.
+Dado que estas interfaces de hardware están todavía en su infancia,
+Todavía tenemos que confiar en pantallas, ratones, touchpads y teclados.
+Aunque la mayoría de los modernos sistemas operativos de escritorio se comunican con sus usuarios
+Medios de ventanas, iconos y punteros, estas tecnologías de software no se
+Difundida hasta los años ochenta. Las raíces de tales * interfaces gráficas de usuario * regresan
+Trabajo de Doug Engelbart en los años sesenta, que se puede ver en lo que se ha
+Llamada "[La madre de todas las demostraciones] (http://www.youtube.com/watch?v=a11JDLBXtPQ)".
 
-Going back even further,
-the only way to interact with early computers was to rewire them.
-But in between,
-from the 1950s to the 1980s,
-most people used line printers.
-These devices only allowed input and output of the letters, numbers, and punctuation found on a standard keyboard,
-so programming languages and software interfaces had to be designed around that constraint.
+Volviendo aún más lejos,
+La única manera de interactuar con las primeras computadoras era volver a conectarlas.
+Pero en el medio,
+Desde la década de 1950 hasta la década de 1980,
+La mayoría de las personas utilizan impresoras de línea.
+Estos dispositivos sólo permiten la entrada y salida de las letras, números y puntuación que se encuentran en un teclado estándar,
+Así que los lenguajes de programación y las interfaces de software tenían que diseñarse alrededor de esa restricción.
 
-This kind of interface is called a
-**command-line interface**, or CLI,
-to distinguish it from a
-**graphical user interface**, or GUI,
-which most people now use.
-The heart of a CLI is a **read-evaluate-print loop**, or REPL:
-when the user types a command and then presses the Enter (or Return) key,
-the computer reads it,
-executes it,
-and prints its output.
-The user then types another command,
-and so on until the user logs off.
+Este tipo de interfaz se denomina
+** interfaz de línea de comandos ** o CLI,
+Para distinguirlo de un
+** interfaz gráfica de usuario ** o GUI,
+Que la mayoría de la gente ahora usa.
+El corazón de una CLI es un ** bucle de lectura-evaluación-impresión ** o REPL:
+Cuando el usuario escribe un comando y presiona la tecla Enter (o Return)
+El ordenador lo lee,
+Lo ejecuta,
+E imprime su salida.
+El usuario entonces escribe otro comando,
+Y así sucesivamente hasta que el usuario cierre la sesión.
 
-This description makes it sound as though the user sends commands directly to the computer,
-and the computer sends output directly to the user.
-In fact,
-there is usually a program in between called a
-**command shell**.
-What the user types goes into the shell,
-which then figures out what commands to run and orders the computer to execute them.
-(Note that the shell is called "the shell" because it encloses the operating system
-in order to hide some of its complexity and make it simpler to interact with.)
+Esta descripción hace que suene como si el usuario envía comandos directamente a la computadora,
+Y el ordenador envía la salida directamente al usuario.
+De hecho,
+Por lo general hay un programa en medio llamado un
+** shell de comandos **.
+Lo que el usuario escribe en el shell,
+Que luego calcula qué comandos ejecutar y ordena al equipo para ejecutarlos.
+(Tenga en cuenta que el shell se llama "el shell" porque encierra el sistema operativo
+Con el fin de ocultar algo de su complejidad y hacer más fácil interactuar con él.)
 
-A shell is a program like any other.
-What's special about it is that its job is to run other programs
-rather than to do calculations itself.
-The most popular Unix shell is Bash,
-the Bourne Again SHell
-(so-called because it's derived from a shell written by Stephen Bourne).
-Bash is the default shell on most modern implementations of Unix
-and in most packages that provide Unix-like tools for Windows.
+Un shell es un programa como cualquier otro.
+Lo que es especial es que su trabajo es ejecutar otros programas
+En lugar de hacer los cálculos en sí.
+El shell Unix más popular es Bash,
+El Bourne Again SHell
+(Así llamado porque se deriva de una cáscara escrita por Stephen Bourne).
+Bash es el shell por defecto en la mayoría de las implementaciones modernas de Unix
+Y en la mayoría de los paquetes que proporcionan herramientas similares a Unix para Windows.
 
-Using Bash or any other shell
-sometimes feels more like programming than like using a mouse.
-Commands are terse (often only a couple of characters long),
-their names are frequently cryptic,
-and their output is lines of text rather than something visual like a graph.
-On the other hand,
-with only a few keystrokes, the shell allows us to combine existing tools into 
-powerful pipelines and handle large volumes of data automatically. This automation
-not only makes us more productive, but also improves the reproducibility of our workflows by 
-allowing us to repeat them with few simple commands.
-In addition, the command line is often the easiest way to interact with remote machines and supercomputers.
-Familiarity with the shell is near essential to run a variety of specialized tools and resources
-including high-performance computing systems.
-As clusters and cloud computing systems become more popular for scientific data crunching,
-being able to interact with them is becoming a necessary skill.
-We can build on the command-line skills covered here
-to tackle a wide range of scientific questions and computational challenges.
+Utilizar Bash o cualquier otro shell
+A veces se siente más como la programación que como usar un ratón.
+Los comandos son tersos (a menudo sólo un par de caracteres de largo),
+Sus nombres son frecuentemente crípticos,
+Y su salida es líneas de texto en lugar de algo visual como un gráfico.
+Por otra parte,
+Con sólo unas pocas teclas, el shell nos permite combinar las herramientas existentes en
+Potentes oleoductos y manejar grandes volúmenes de datos automáticamente. Esta automatización
+No sólo nos hace más productivos, sino que también mejora la reproducibilidad de nuestros flujos de trabajo
+Permitiéndonos repetirlas con pocos comandos simples.
+Además, la línea de comandos es a menudo la forma más fácil de interactuar con máquinas remotas y superordenadores.
+La familiaridad con el shell es casi esencial para ejecutar una variedad de herramientas y recursos especializados
+Incluyendo sistemas de computación de alto rendimiento.
+A medida que los clusters y los sistemas de computación en la nube se vuelven más populares para el crujido de datos científicos,
+Ser capaz de interactuar con ellos se está convirtiendo en una habilidad necesaria.
+Podemos aprovechar las habilidades de línea de comandos cubiertas aquí
+Para abordar una amplia gama de cuestiones científicas y desafíos computacionales.
 
-## Nelle's Pipeline: Starting Point
+## Pipeline de Nelle: Punto de partida
 
-Nelle Nemo, a marine biologist,
-has just returned from a six-month survey of the
-[North Pacific Gyre](http://en.wikipedia.org/wiki/North_Pacific_Gyre),
-where she has been sampling gelatinous marine life in the
-[Great Pacific Garbage Patch](http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch).
-She has 1520 samples in all, and now needs to:
+Nelle Nemo, una bióloga marina,
+Acaban de regresar de una encuesta de seis meses
+[Gyre del Pacífico Norte] (http://en.wikipedia.org/wiki/North_Pacific_Gyre),
+Donde ha estado probando la vida marina gelatinosa en la
+[Great Pacific Garbage Patch] (http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch).
+Ella tiene 1520 muestras en total, y ahora necesita:
 
-1.  Run each sample through an assay machine
-    that will measure the relative abundance of 300 different proteins.
-    The machine's output for a single sample is
-    a file with one line for each protein.
-2.  Calculate statistics for each of the proteins separately
-    using a program her supervisor wrote called `goostat`.
-3.  Compare the statistics for each protein
-    with corresponding statistics for each other protein
-    using a program one of the other graduate students wrote called `goodiff`.
-4.  Write up results.
-    Her supervisor would really like her to do this by the end of the month
-    so that her paper can appear in an upcoming special issue of *Aquatic Goo Letters*.
+1. Ejecutar cada muestra a través de una máquina de ensayo
+    Que medirán la abundancia relativa de 300 proteínas diferentes.
+    La salida de la máquina para una sola muestra es
+    Un archivo con una línea para cada proteína.
+2. Calcular las estadísticas de cada una de las proteínas por separado
+    Usando un programa que su supervisor escribió llamado `goostat`.
+3. Compare las estadísticas de cada proteína
+    Con las estadísticas correspondientes para cada otra proteína
+    Utilizando un programa que uno de los otros estudiantes graduados escribió llamado `goodiff`.
+4. Anote los resultados.
+    Su supervisor realmente le gustaría que lo hiciera a finales de mes
+    Para que su papel pueda aparecer en un próximo número especial de * Aquatic Goo Letters *.
 
-It takes about half an hour for the assay machine to process each sample.
-The good news is that
-it only takes two minutes to set each one up.
-Since her lab has eight assay machines that she can use in parallel,
-this step will "only" take about two weeks.
+La máquina de ensayo tarda aproximadamente media hora en procesar cada muestra.
+La buena noticia es que
+Sólo se necesitan dos minutos para configurar cada uno.
+Dado que su laboratorio tiene ocho máquinas de ensayo que puede utilizar en paralelo,
+Este paso "sólo" durará unas dos semanas.
 
-The bad news is that if she has to run `goostat` and `goodiff` by hand,
-she'll have to enter filenames and click "OK" 46,370 times
-(1520 runs of `goostat`, plus 300*299/2 (half of 300 times 299) runs of `goodiff`).
-At 30 seconds each,
-that will take more than two weeks.
-Not only would she miss her paper deadline,
-the chances of her typing all of those commands right are practically zero.
-
-The next few lessons will explore what she should do instead.
-More specifically,
-they explain how she can use a command shell
-to automate the repetitive steps in her processing pipeline
-so that her computer can work 24 hours a day while she writes her paper.
-As a bonus,
-once she has put a processing pipeline together,
-she will be able to use it again whenever she collects more data.
-
+La mala noticia es que si tiene que ejecutar `goostat
